@@ -5,7 +5,7 @@ Wakenbake is a super small jQuery script that allows a visual effect on page loa
 
 ### To install
 
-Simply include this script in your footer (After jQuery has loaded) (Or better still, using Cooker at https://github.com/genericmilk/cooker 😉 add it to the /resources/js/libraries` folder)
+Simply include this script in your footer (After jQuery has loaded) (Or better still, using Cooker at https://github.com/genericmilk/cooker 😉 add it to the `/resources/js/libraries` folder)
 
 Then simply include `data-fade="true"` on as many elements as you like!
 
