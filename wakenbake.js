@@ -1,20 +1,25 @@
 var Wakenbake = {
+    Wait: 0,
+    Add: 75,
+    Speed: 0.5,
     Boot:function(){
-        var Wait = 0;
-        var Add = 150;
-        $('head').append('<style>*[data-fade=true]{-moz-transition: margin-top .5s ease-out, opacity .5s ease-out;-webkit-transition: margin-top .5s ease-out, opacity .5s ease-out;-o-transition: margin-top .5s ease-out, opacity .5s ease-out;transition: margin-top .5s ease-out, opacity .5s ease-out;</style>');
+        $('head').append('<style>*[data-fade=true]{-moz-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;-webkit-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;-o-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;</style>');
         $('head').append('<style>*[data-fade=true]:not(.faded){margin-top: 50px!important;opacity: 0;}</style>');
         $('head').append('<style>*[data-fade=true]:not(.init){-webkit-transition: none !important;-moz-transition: none !important;-ms-transition: none !important;-o-transition: none !important;}</style>');
+    },
+    Go:function(){
+        var _loc_wait = Wakenbake.Wait;
+        var _loc_add = Wakenbake.Add;   
         setTimeout(function(){
-            $( "*[data-fade=true]" ).each(function() {
+            $( "*[data-fade=true]:not(.faded)" ).each(function() {
                 var This = $(this);
                 setTimeout(function(){
                     This.addClass('faded');
                     This.addClass('init');
-                }, Wait);
-                Wait = Wait + Add;
+                }, _loc_wait);
+                _loc_wait = _loc_wait + _loc_add;
             });
-        }, Add);
+        }, _loc_add);
     }
 };
 Wakenbake.Boot();
