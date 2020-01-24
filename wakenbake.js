@@ -22,4 +22,7 @@ var Wakenbake = {
         }, _loc_add);
     }
 };
-Wakenbake.Boot();
+$(function() {
+    Wakenbake.Boot();
+    Wakenbake.Go();
+});
