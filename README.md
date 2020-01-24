@@ -1,7 +1,11 @@
 # 🌇 Wakenbake
 ## By Genericmilk
 
-Wakenbake is a super small jQuery script that allows a visual effect on page load for a "rising card" look.
+Wakenbake is a super small script that allows a visual effect on page load for a "rising card" look.
+
+Wakenbake is smaller if you choose to run it in the `wakenbake.js` uncompressed or `wakenbake.min.js` compressed format, But it relies on jQuery to work.
+
+If you do not use jQuery in your development environment, Why not use the new beta `wakenbake.nojq.js` version which does away with the need for the framework!
 
 ### To install
 
