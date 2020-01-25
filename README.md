@@ -33,7 +33,3 @@ However in the callback to your AJAX request simply run the following function c
 Wakenbake.Go();
 ```
 This will manually trigger the effect for any non-processed elements that haven't already run on the animation chain!
-
-### Roadmap
-
-I'm looking to make this not rely on jQuery in the future to support other workflows! Enjoy!
