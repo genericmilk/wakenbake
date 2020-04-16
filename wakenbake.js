@@ -7,7 +7,7 @@ var Wakenbake = {
         $('head').append('<style>*[data-fade=true]:not(.faded){margin-top: 50px!important;opacity: 0;}</style>');
         $('head').append('<style>*[data-fade=true]:not(.init){-webkit-transition: none !important;-moz-transition: none !important;-ms-transition: none !important;-o-transition: none !important;}</style>');
     },
-    Go:function(){
+    Go:function(callback){
         var _loc_wait = Wakenbake.Wait;
         var _loc_add = Wakenbake.Add;   
         setTimeout(function(){
@@ -16,7 +16,13 @@ var Wakenbake = {
                 setTimeout(function(){
                     This.addClass('faded');
                     This.addClass('init');
+                    setTimeout(function(){
+                        if (typeof callback == "function"){
+                            callback(); 
+                        }
+                    }, Wakenbake.Speed * 1000 / 5);
                 }, _loc_wait);
+                
                 _loc_wait = _loc_wait + _loc_add;
             });
         }, _loc_add);
