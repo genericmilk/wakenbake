@@ -3,9 +3,7 @@ var Wakenbake = {
     Add: 75,
     Speed: 0.5,
     Boot:function(){
-        $('head').append('<style>*[data-fade=true]{-moz-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;-webkit-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;-o-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;</style>');
-        $('head').append('<style>*[data-fade=true]:not(.faded){margin-top: 50px!important;opacity: 0;}</style>');
-        $('head').append('<style>*[data-fade=true]:not(.init){-webkit-transition: none !important;-moz-transition: none !important;-ms-transition: none !important;-o-transition: none !important;}</style>');
+        $('head').append('<style>*[data-fade=true]{-moz-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;-webkit-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;-o-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;*[data-fade=true]:not(.faded){margin-top: 50px!important;opacity: 0;}*[data-fade=true]:not(.init){-webkit-transition: none !important;-moz-transition: none !important;-ms-transition: none !important;-o-transition: none !important;}</style>');
     },
     Go:function(callback){
         var _loc_wait = Wakenbake.Wait;
