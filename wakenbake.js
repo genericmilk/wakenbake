@@ -1,32 +1,28 @@
-var Wakenbake = {
-    Wait: 0,
-    Add: 75,
-    Speed: 0.5,
-    Boot:function(){
-        $('head').append('<style>*[data-fade=true]{-moz-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;-webkit-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;-o-transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;transition: margin-top ' + Wakenbake.Speed + 's ease-out, opacity ' + Wakenbake.Speed + 's ease-out;*[data-fade=true]:not(.faded){margin-top: 50px!important;opacity: 0;}*[data-fade=true]:not(.init){-webkit-transition: none !important;-moz-transition: none !important;-ms-transition: none !important;-o-transition: none !important;}</style>');
+let wakenbake = {
+    initialDelay: 0,
+    add: 75,
+    speed: 0.5,
+    goOnBoot: true,
+    boot(){
+        document.getElementsByTagName('head')[0].innerHTML += '<style>*[data-wakenbake=true]{-moz-transition: margin-top ' + wakenbake.speed + 's ease-out, opacity ' + wakenbake.speed + 's ease-out;-webkit-transition: margin-top ' + wakenbake.speed + 's ease-out, opacity ' + wakenbake.speed + 's ease-out;-o-transition: margin-top ' + wakenbake.speed + 's ease-out, opacity ' + wakenbake.speed + 's ease-out;transition: margin-top ' + wakenbake.speed + 's ease-out, opacity ' + wakenbake.speed + 's ease-out;*[data-wakenbake=true]:not(.faded){margin-top: 50px!important;opacity: 0;}</style>*[data-wakenbake=true]:not(.init){-webkit-transition: none !important;-moz-transition: none !important;-ms-transition: none !important;-o-transition: none !important;}</style>';
+        return this.goOnBoot ? wakenbake.go() : true;
     },
-    Go:function(callback){
-        var _loc_wait = Wakenbake.Wait;
-        var _loc_add = Wakenbake.Add;   
+    go(){
+        var _loc_wait = wakenbake.initialDelay;
+        var _loc_add = wakenbake.add;   
         setTimeout(function(){
-            $( "*[data-fade=true]:not(.faded)" ).each(function() {
-                var This = $(this);
-                setTimeout(function(){
-                    This.addClass('faded');
-                    This.addClass('init');
-                    setTimeout(function(){
-                        if (typeof callback == "function"){
-                            callback(); 
-                        }
-                    }, Wakenbake.Speed * 1000 / 5);
-                }, _loc_wait);
-                
+            var a = document.querySelectorAll('[data-wakenbake]');
+            for (var i=0, max=a.length; i < max; i++) {
+                wakenbake.handle(a[i],_loc_wait);
                 _loc_wait = _loc_wait + _loc_add;
-            });
+            }
         }, _loc_add);
+    },
+    handle(e,w){
+        setTimeout(function(){
+            e.className += ' faded';
+            e.className += ' init';
+        }, w);
     }
 };
-$(function() {
-    Wakenbake.Boot();
-    Wakenbake.Go();
-});
+wakenbake.boot();
